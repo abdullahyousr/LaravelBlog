@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\CommentController;
+use App\Http\Controllers\Profile\ProfileController;
+use App\Http\Controllers\Post\PostController;
+use App\Http\Controllers\Comment\CommentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
