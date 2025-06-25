@@ -3,6 +3,8 @@
 use App\Http\Controllers\Profile\ProfileController;
 use App\Http\Controllers\Post\PostController;
 use App\Http\Controllers\Comment\CommentController;
+use App\Http\Controllers\Product\ProductController;
+use App\Http\Controllers\Cart\CartController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -11,6 +13,10 @@ Route::get('/', function () {
 
 // routes/web.php
 Route::get('posts', [PostController::class, 'index'])->name('posts.index');
+
+// Product routes
+Route::get('products', [ProductController::class, 'index'])->name('products.index');
+Route::post('products/{product}/add-to-cart', [ProductController::class, 'addToCart'])->name('products.addToCart');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -29,6 +35,10 @@ Route::middleware('auth')->group(function () {
     
     Route::post('Posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
     Route::delete('comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+    
+    // Cart routes (require authentication)
+    Route::get('cart', [CartController::class, 'index'])->name('cart.index');
+    Route::post('cart/order', [CartController::class, 'order'])->name('cart.order');
 });
 
 Route::get('posts/{post}', [PostController::class, 'show'])->name('posts.show');

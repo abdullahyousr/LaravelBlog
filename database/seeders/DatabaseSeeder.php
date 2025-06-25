@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 use App\Models\Post;
 use App\Models\Comment;
-
 use App\Models\User;
+use App\Models\Product;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -25,5 +25,8 @@ class DatabaseSeeder extends Seeder
             ->hasPosts(3)
             ->hasComments(5)
             ->create();
+
+        // Seed products
+        Product::factory(20)->create();
     }
 }
